@@ -1,6 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Resepsionis\BookingListController;
+use App\Http\Controllers\Tamu\BookingController;
+use App\Http\Controllers\Tamu\KamarListController;
+use Illuminate\Support\Facades\App;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +22,53 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/fasilitasHotel', function () {
+    return view('fasilitas');
+});
+
+Route::get('/kontak', function () {
+    return view('kontak');
+});
+
+Route::get('/gallery', function () {
+    return view('gallery');
+});
+
+Route::get('/tipeKamar', [KamarListController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+
+Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+
+
+
+Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'admin']);
+
+
+
+
+Route::get('/resepsionis', [BookingListController::class, 'index'])->middleware(['auth', 'resepsionis']);
+
+
+
+
+Route::resource('booking', BookingController::class)->middleware(['auth', 'user']);
+
+
+
+// buat middleware auth ke specific url(get) misal : /booking/create

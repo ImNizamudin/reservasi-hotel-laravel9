@@ -12,6 +12,7 @@
                 <a class="nav-link {{ ($title === "About") ? 'active' : '' }}" href="/about">About</a>
                 <a class="nav-link {{ ($title === "Kamar") ? 'active' : '' }}" href="/tipeKamar">Kamar</a>
                 <a class="nav-link {{ ($title === "Contact") ? 'active' : '' }}" href="/kontak">Kontak</a>
+                <a class="nav-link {{ ($title === "Blog") ? 'active' : '' }}" href="/blog">Blog</a>
                 <a class="nav-link {{ ($title === "Gallery") ? 'active' : '' }}" href="/gallery">Gallery</a>
             </div>
 

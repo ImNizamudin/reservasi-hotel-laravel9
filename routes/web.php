@@ -49,6 +49,24 @@ Route::get('/gallery', function () {
     ]);
 });
 
+Route::get('/detailKamar', function () {
+    return view('detailKamar',[
+        "title" => "Detail Kamar"
+    ]);
+});
+
+Route::get('/blog', function () {
+    return view('blog',[
+        "title" => "Blog"
+    ]);
+});
+
+Route::get('/infoBlog', function () {
+    return view('infoBlog',[
+        "title" => "Info Blog"
+    ]);
+});
+
 Route::get('/tipeKamar', [KamarListController::class, 'index']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

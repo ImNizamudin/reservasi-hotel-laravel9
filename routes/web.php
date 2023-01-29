@@ -26,23 +26,27 @@ use Illuminate\Support\Facades\App;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        "title" => "Home"
+    ]);
 });
 
 Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/fasilitasHotel', function () {
-    return view('fasilitas');
+    return view('about',[
+        "title" => "About"
+    ]);
 });
 
 Route::get('/kontak', function () {
-    return view('kontak');
+    return view('kontak',[
+        "title" => "Contact"
+    ]);
 });
 
 Route::get('/gallery', function () {
-    return view('gallery');
+    return view('gallery',[
+        "title" => "Gallery"
+    ]);
 });
 
 Route::get('/tipeKamar', [KamarListController::class, 'index']);

@@ -1,19 +1,18 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar"">
     <div class="container">
         <a class="navbar-brand" href="/">HOTEL VLOYVE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        <button class="navbar-toggler" type="button" data-target="#ftco-nav" aria-controls="ftco-nav" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="oi oi-menu"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/about">About</a>
-                <a class="nav-link" href="/tipeKamar">Kamar</a>
-                <a class="nav-link" href="/fasilitasHotel">Fasilitas</a>
-                <a class="nav-link" href="/kontak">Kontak</a>
-                <a class="nav-link" href="/gallery">Gallery</a>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link {{ ($title === "Home") ? 'active' : '' }}" href="/">Home</a>
+                <a class="nav-link {{ ($title === "About") ? 'active' : '' }}" href="/about">About</a>
+                <a class="nav-link {{ ($title === "Kamar") ? 'active' : '' }}" href="/tipeKamar">Kamar</a>
+                <a class="nav-link {{ ($title === "Contact") ? 'active' : '' }}" href="/kontak">Kontak</a>
+                <a class="nav-link {{ ($title === "Gallery") ? 'active' : '' }}" href="/gallery">Gallery</a>
             </div>
 
             @auth

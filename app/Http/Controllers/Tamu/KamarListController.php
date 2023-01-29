@@ -9,6 +9,8 @@ class KamarListController extends Controller
 {
     public function index()
     {
-        return view('kamar');
+        return view('kamar',[
+            "title" => "Kamar"
+        ]);
     }
 }

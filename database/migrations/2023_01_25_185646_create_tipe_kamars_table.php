@@ -18,8 +18,8 @@ class CreateTipeKamarsTable extends Migration
             $table->string('nama');
             $table->double('harga');
             $table->integer('stok');
-            $table->integer('onbook');
-            $table->integer('onuse');
+            $table->integer('onbook')->nullable();
+            $table->integer('onuse')->nullable();
             $table->string('img')->nullable();
             $table->timestamps();
         });

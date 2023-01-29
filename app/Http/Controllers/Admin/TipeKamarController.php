@@ -41,7 +41,22 @@ class TipeKamarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            "nama" => "required|max:255",
+            "harga" => "required",
+            "stok" => "required",
+            "img" => "image|file|max:1024",
+        ]);
+
+        if ($request->file('img')) {
+            $validatedData["img"] = $request->file('img')->store('foto-kamar');
+        }
+
+        $tipeKamar = TipeKamar::create($validatedData);
+
+        $tipeKamar->fasilitasKamars()->attach($request->fasilitas);
+
+        return redirect('/admin/tipe-kamar')->with('success', 'Kamar baru telah ditambahkan!');
     }
 
     /**

@@ -62,8 +62,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 
 Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'admin']);
-Route::resource('/admin/fasilitas-kamar', FkamarController::class)->middleware(['auth', 'admin']);
-Route::resource('/admin/tipe-kamar', TipeKamarController::class)->middleware(['auth', 'admin']);
+Route::resource('/admin/fasilitas-kamar', FkamarController::class)->except('show')->middleware(['auth', 'admin']);
+Route::resource('/admin/tipe-kamar', TipeKamarController::class)->except('show')->middleware(['auth', 'admin']);
 
 
 Route::get('/resepsionis', [BookingListController::class, 'index'])->middleware(['auth', 'resepsionis']);

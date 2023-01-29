@@ -15,7 +15,7 @@ class CreateTipeKamarsFasilitasKamarsTable extends Migration
     {
         Schema::create('tipe_kamars_fasilitas_kamars', function (Blueprint $table) {
             $table->unsignedBigInteger('tipe_kamar_id');
-            $table->foreign('tipe_kamar_id')->references('id')->on('tipe_kamars');
+            $table->foreign('tipe_kamar_id')->references('id')->on('tipe_kamars')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('fasilitas_kamar_id');
             $table->foreign('fasilitas_kamar_id')->references('id')->on('fasilitas_kamars')->onDelete('cascade')->onUpdate('cascade');
         });

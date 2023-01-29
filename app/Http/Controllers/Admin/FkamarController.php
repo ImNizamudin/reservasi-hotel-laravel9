@@ -50,7 +50,7 @@ class FkamarController extends Controller
 
         FasilitasKamar::create($validatedData);
 
-        return redirect('/admin/fasilitas-kamar')->with('success', 'Fasilitas kamar telah ditambahkan!');
+        return redirect('/admin/fasilitas-kamar')->with('success', 'Fasilitas kamar baru telah ditambahkan!');
     }
 
     /**

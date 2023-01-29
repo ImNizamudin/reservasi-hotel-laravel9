@@ -51,12 +51,12 @@ class DatabaseSeeder extends Seeder
             'role'              => 'USER',
         ]);
 
-        TipeKamar::create([
-            'nama' => 'Reguler',
-            'harga' => 270000,
-            'stok' => 20,
-            'onbook' => 0,
-            'onuse' => 0,
-        ]);
+        // TipeKamar::create([
+        //     'nama' => 'Reguler',
+        //     'harga' => 270000,
+        //     'stok' => 20,
+        //     'onbook' => 0,
+        //     'onuse' => 0,
+        // ]);
     }
 }

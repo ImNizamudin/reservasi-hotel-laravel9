@@ -29,7 +29,7 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}" aria-current="page"
-                    href="/dashboard/categories">
+                    href="#">
                     <span data-feather="grid" class="align-text-bottom"></span>
                     Post Categories
                 </a>

@@ -22,7 +22,7 @@
         <div class="mb-3">
             <label for="harga" class="form-label">Harga Kamar</label>
             <input type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" id="harga"
-                value="{{ old('harga') }}" required autofocus>
+                value="{{ old('harga') }}" required min="1">
             @error('harga')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -32,7 +32,7 @@
         <div class="mb-3">
             <label for="stok" class="form-label">Stok Kamar</label>
             <input type="number" class="form-control @error('stok') is-invalid @enderror" name="stok" id="stok"
-                value="{{ old('stok') }}" required autofocus>
+                value="{{ old('stok') }}" required min="1">
             @error('stok')
             <div class="invalid-feedback">
                 {{ $message }}

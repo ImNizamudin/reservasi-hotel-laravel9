@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipeKamar;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -48,6 +49,14 @@ class DatabaseSeeder extends Seeder
             'remember_token'    => Str::random(10),
             'alamat'            => 'Kediri',
             'role'              => 'USER',
+        ]);
+
+        TipeKamar::create([
+            'nama' => 'Reguler',
+            'harga' => 270000,
+            'stok' => 20,
+            'onbook' => 0,
+            'onuse' => 0,
         ]);
     }
 }

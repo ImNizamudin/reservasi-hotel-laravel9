@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\TipeKamar;
+use App\Http\Controllers\Controller;
+use App\Models\FasilitasKamar;
 use Illuminate\Http\Request;
 
 class TipeKamarController extends Controller
@@ -14,7 +16,9 @@ class TipeKamarController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.tipe-kamar.index', [
+            "tipe_kamars" => TipeKamar::with(['fasilitasKamars'])->get(),
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class TipeKamarController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.tipe-kamar.create', [
+            "fkamars" => FasilitasKamar::all(),
+        ]);
     }
 
     /**

@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\Fkamar;
+use App\Http\Controllers\Admin\FkamarController;
+use App\Http\Controllers\Admin\TipeKamarController;
+use App\Http\Controllers\FasilitasKamarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -58,8 +62,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 
 Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'admin']);
-
-
+Route::resource('/admin/fasilitas-kamar', FkamarController::class)->middleware(['auth', 'admin']);
+Route::resource('/admin/tipe-kamar', TipeKamarController::class)->middleware(['auth', 'admin']);
 
 
 Route::get('/resepsionis', [BookingListController::class, 'index'])->middleware(['auth', 'resepsionis']);

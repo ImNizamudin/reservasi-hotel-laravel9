@@ -16,7 +16,6 @@ class CreateFasilitasKamarsTable extends Migration
     {
         Schema::create('fasilitas_kamars', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(TipeKamar::class);
             $table->string('nama');
             $table->string('img')->nullable();
             $table->timestamps();

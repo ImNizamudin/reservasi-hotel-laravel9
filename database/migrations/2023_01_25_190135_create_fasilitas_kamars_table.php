@@ -16,7 +16,7 @@ class CreateFasilitasKamarsTable extends Migration
     {
         Schema::create('fasilitas_kamars', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama')->unique();
             $table->string('img')->nullable();
             $table->timestamps();
         });

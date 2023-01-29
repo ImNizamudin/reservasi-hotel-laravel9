@@ -35,7 +35,7 @@
             </div>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Edit Fasilitas Kamar</button>
+        <button type="submit" class="btn btn-primary">Perbarui Fasilitas Kamar</button>
     </form>
 </div>
 

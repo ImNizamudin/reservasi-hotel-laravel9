@@ -6,6 +6,7 @@ use App\Models\TipeKamar;
 use App\Http\Controllers\Controller;
 use App\Models\FasilitasKamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TipeKamarController extends Controller
 {
@@ -42,9 +43,10 @@ class TipeKamarController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            "nama" => "required|max:255",
+            "nama" => "required|unique:tipe_kamars|max:255",
             "harga" => "required",
             "stok" => "required",
+            "fasilitas" => "required",
             "img" => "image|file|max:1024",
         ]);
 
@@ -78,7 +80,10 @@ class TipeKamarController extends Controller
      */
     public function edit(TipeKamar $tipeKamar)
     {
-        //
+        return view('dashboard.tipe-kamar.edit', [
+            'tipe_kamar' => TipeKamar::with(['fasilitasKamars'])->findOrFail($tipeKamar->id),
+            'fkamars' => FasilitasKamar::all(),
+        ]);
     }
 
     /**
@@ -90,7 +95,28 @@ class TipeKamarController extends Controller
      */
     public function update(Request $request, TipeKamar $tipeKamar)
     {
-        //
+        $validatedData = $request->validate([
+            "nama" => "required|unique:tipe_kamars|max:255",
+            "harga" => "required",
+            "stok" => "required",
+            "fasilitas" => "required",
+            "img" => "image|file|max:1024",
+        ]);
+
+        if ($request->file('img')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData["img"] = $request->file('img')->store('foto-kamar');
+        }
+
+        TipeKamar::where('id', $tipeKamar->id)
+            ->update($validatedData);
+
+        $tipeKamar->fasilitasKamars()->sync($request->fasilitas);
+
+        return redirect('/admin/tipe-kamar')->with('success', 'Kamar telah diperbarui!');
     }
 
     /**
@@ -101,6 +127,14 @@ class TipeKamarController extends Controller
      */
     public function destroy(TipeKamar $tipeKamar)
     {
-        //
+        if ($tipeKamar->img) {
+            Storage::delete($tipeKamar->img);
+        }
+
+        TipeKamar::destroy($tipeKamar->id);
+
+        $tipeKamar->fasilitasKamars()->detach($tipeKamar->id);
+
+        return redirect('/admin/tipe-kamar')->with('success', 'Kamar telah dihapus!');
     }
 }

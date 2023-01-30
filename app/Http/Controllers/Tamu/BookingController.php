@@ -3,84 +3,32 @@
 namespace App\Http\Controllers\Tamu;
 
 use App\Http\Controllers\Controller;
-use App\Models\BookingList;
+use App\Models\TipeKamar;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+
+    /**  ada dua jalur untuk memboking kamar
+     * 1. dari tipekamar pilih kamar mana, trus booking now, lalu page booking -> kamar auto terselect(inputan)
+     * 2. dari btn / aksi membuat boking, klik lalu diarahkan ke page booking -> memilih kamar di select(inputan)
      */
-    public function index()
+
+    public function createID(TipeKamar $id)
     {
-        return view('tamu.booking.index');
+        return view('booking.index', [
+            "title" => "Booking",
+            "tipe_kamar" => $id,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('booking.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\BookingList  $bookingList
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BookingList $bookingList)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\BookingList  $bookingList
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BookingList $bookingList)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BookingList  $bookingList
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BookingList $bookingList)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\BookingList  $bookingList
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BookingList $bookingList)
-    {
-        //
+        return $request;
     }
 }

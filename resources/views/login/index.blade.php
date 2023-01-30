@@ -68,7 +68,7 @@
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                        <button style="border-radius: 1rem;" class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                                     </div>
 
                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a

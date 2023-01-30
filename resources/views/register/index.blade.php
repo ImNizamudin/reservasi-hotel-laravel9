@@ -32,7 +32,7 @@ button:hover {
 
 
         <main class="form-registration w-100 m-auto">
-            <section class="h-100 bg-dark">
+            <section class="h-100" style="background-color: #114784;">
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col">

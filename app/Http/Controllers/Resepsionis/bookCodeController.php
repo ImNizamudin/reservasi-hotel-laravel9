@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class BookingListController extends Controller
+class bookCodeController extends Controller
 {
     public function index()
     {
-        return view('resepsionis.index',[
-            "title" => "Dashboard"
+        return view('resepsionis.kode-booking.index',[
+            "title" => "Booking Code"
         ]);
     }
 }

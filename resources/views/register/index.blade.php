@@ -32,11 +32,11 @@ button:hover {
 
 
         <main class="form-registration w-100 m-auto">
-            <section class="h-100" style="background-color: #114784;">
+            <section class="h-100" style="background-image:url(images/bg_1.jpg);">
                 <div class="container py-5 h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div style="margin-top: 40px;" class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col">
-                        <div class="card card-registration my-4">
+                        <div class="card card-registration my-4" style="border-radius: 1rem;">
                         <div class="row g-0">
                             <div class="col-xl-6 d-none d-xl-block">
                             <img src="images/about-1.jpg"

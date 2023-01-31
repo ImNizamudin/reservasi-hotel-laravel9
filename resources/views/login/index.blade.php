@@ -21,7 +21,7 @@
 <main class="form-signin w-100 m-auto">
     <section class="vh-100" style="background-image:url(images/bg_1.jpg);"">
                 <div class=" container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div style="margin-top: 40px;" class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
@@ -55,7 +55,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-outline mb-4">
+                                    <div class="form-outline mb-4 form-password-toggle">
                                         <input style="border-radius: 1rem;" type="password" id="password"
                                             name="password" placeholder="Password" required
                                             class="form-control form-control-lg">

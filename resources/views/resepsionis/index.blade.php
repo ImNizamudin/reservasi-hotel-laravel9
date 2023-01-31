@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('resepsionis.layouts.main')
 
 @section('container')
 

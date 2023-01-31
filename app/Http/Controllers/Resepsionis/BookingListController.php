@@ -10,6 +10,8 @@ class BookingListController extends Controller
 {
     public function index()
     {
-        return view('resepsionis.index');
+        return view('resepsionis.index',[
+            "title" => "Dashboard"
+        ]);
     }
 }

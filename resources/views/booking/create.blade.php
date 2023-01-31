@@ -2,8 +2,7 @@
 
 @section('container')
 
-{{ $tipe_kamar }}
-
+@if ($tipe_kamar->stok > 1)
 <form action="/booking" method="POST">
     @csrf
     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -44,6 +43,7 @@
             {{ $message }}
         </div>
         @enderror
+        <input type="hidden" name="harga" value="{{ old('harga', $tipe_kamar->harga) }}">
         <label for="nama_kamar" class="form-label">Nama Kamar</label>
         <input type="text" class="form-control @error('nama_kamar') is-invalid @enderror" name="nama_kamar"
             id="nama_kamar" value="{{ old('nama_kamar', $tipe_kamar->nama) }}" required readonly>
@@ -54,6 +54,7 @@
         @enderror
     </div>
     <div class="mb-3">
+        <input type="hidden" name="stok" value="{{ old('stok', $tipe_kamar->stok) }}">
         <label for="jml_kamar" class="form-label">Jumlah Kamar</label>
         <input type="number" class="form-control @error('jml_kamar') is-invalid @enderror" name="jml_kamar"
             id="jml_kamar" value="{{ old('jml_kamar') }}" min="1" max="{{ $tipe_kamar->stok }}" required>
@@ -63,13 +64,34 @@
         </div>
         @enderror
     </div>
+    <div class="mb-3">
+        <label for="payby" class="form-label">Pilih Metode Pembayaran</label>
+        <select class="form-control" name="payby" id="payby" required>
+            @if (old('payby'))
+            @if (old('payby') == "ONSITE")
+            <option value="ONSITE">ONSITE</option>
+            @else
+            <option value="ONLINE">ONLINE</option>
+            @endif
+            @else
+            <option value="ONSITE">ONSITE</option>
+            <option value="ONLINE">ONLINE</option>
+            @endif
+        </select>
+    </div>
+    <small>Booking kamar minimal 1 hari sebelum tanggal check-in </small>
     <div class="row">
         <div class="col-md d-flex py-md-4">
             <div class="form-group align-self-stretch d-flex align-items-end">
                 <div class="wrap align-self-stretch py-3 px-4">
                     <label for="tgl_checkin">Tanggal Check-in</label>
                     <input type="date" class="form-control" name="tgl_checkin" id="tgl_checkin"
-                        placeholder="Tanggal Check-in">
+                        placeholder="Tanggal Check-in" required>
+                    @error('tgl_checkin')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -77,13 +99,27 @@
             <div class="form-group align-self-stretch d-flex align-items-end">
                 <div class="wrap align-self-stretch py-3 px-4">
                     <label for="tgl_checkout">Tanggal Check-out</label>
-                    <input type="date" class="form-control" name="tgl_checkout" id="tgl_checkout">
+                    <input type="date" class="form-control" name="tgl_checkout" id="tgl_checkout" required>
+                    @error('tgl_checkout')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Booking Kamar</button>
+    <button type="submit" class="btn btn-primary" id="submit">Booking Kamar</button>
 </form>
+
+@else
+<center>
+    <h1>Maaf seluruh Kamar {{ $tipe_kamar->nama }} telah dipesan!</h1>
+</center>
+<center>
+    <a href="/tipeKamar" class="btn btn-primary">Pesan Kamar Lain</a>
+</center>
+@endif
 
 
 <!-- loader -->

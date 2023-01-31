@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Resepsionis\BookingListController;
 use App\Http\Controllers\Tamu\BookingController;
+use App\Http\Controllers\Tamu\MyBookingList;
 use Illuminate\Support\Facades\App;
 
 
@@ -91,7 +92,8 @@ Route::get('/resepsionis', [BookingListController::class, 'index'])->middleware(
 Route::get('/booking/{id:id}', [BookingController::class, 'createID'])->middleware(['auth', 'user']);
 Route::get('/booking', [BookingController::class, 'create'])->middleware(['auth', 'user']);
 Route::post('/booking', [BookingController::class, 'store'])->middleware(['auth', 'user']);
-
+Route::get('/mybookinglist/{user_id}', [MyBookingList::class, 'show'])->middleware(['auth', 'user']);
+Route::get('/mybookinglist-print/{id}', [MyBookingList::class, 'print'])->middleware(['auth', 'user']);
 
 
 // buat middleware auth ke specific url(get) misal : /booking/create

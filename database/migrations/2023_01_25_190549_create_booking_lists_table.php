@@ -16,15 +16,17 @@ class CreateBookingListsTable extends Migration
     {
         Schema::create('booking_lists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('nama_pemesan');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             $table->string('email');
             $table->foreignIdFor(TipeKamar::class);
             $table->integer('jml_kamar');
-            $table->timestamp('tgl_checkin');
-            $table->timestamp('tgl_checkout')->nullable();
-            $table->string('PayBay');
-            $table->boolean('PayEnd');
+            $table->date('tgl_checkin');
+            $table->date('tgl_checkout')->nullable();
+            $table->double('total');
+            $table->string('PayBy')->nullable();
+            $table->boolean('PayEnd')->nullable();
             $table->string('status');
             $table->string('kode_booking');
             $table->timestamps();

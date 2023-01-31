@@ -20,6 +20,14 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row">
+            @if (session()->has('penuh'))
+            <div class="col-md-12">
+                <div class="alert alert-danger alert-dismissible fade show col-lg-6" role="alert">
+                    {{ session('penuh') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            @endif
             <div class="col-md-12 ftco-animate">
                 @if ($tipe_kamar->img)
                 <div class="room-img" style="background-image: url({{ asset('storage/' . $tipe_kamar->img) }});"></div>

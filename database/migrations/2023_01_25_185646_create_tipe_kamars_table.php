@@ -15,7 +15,7 @@ class CreateTipeKamarsTable extends Migration
     {
         Schema::create('tipe_kamars', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->unique();
+            $table->string('nama');
             $table->double('harga');
             $table->integer('stok');
             $table->integer('onbook')->nullable();

@@ -43,7 +43,7 @@ class TipeKamarController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            "nama" => "required|unique:tipe_kamars|max:255",
+            "nama" => "required|max:255",
             "harga" => "required",
             "stok" => "required",
             "fasilitas" => "required",
@@ -96,10 +96,9 @@ class TipeKamarController extends Controller
     public function update(Request $request, TipeKamar $tipeKamar)
     {
         $validatedData = $request->validate([
-            "nama" => "required|unique:tipe_kamars|max:255",
+            "nama" => "required|max:255",
             "harga" => "required",
             "stok" => "required",
-            "fasilitas" => "required",
             "img" => "image|file|max:1024",
         ]);
 

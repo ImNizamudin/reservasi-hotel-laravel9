@@ -42,7 +42,8 @@
         </div>
         <div class="mb-3">
             <label for="fkamar" class="form-label">Fasilitas Kamar</label>
-            <select class="js-example-basic-multiple form-select" name="fasilitas[]" multiple="multiple" id="fkamar">
+            <select class="js-example-basic-multiple form-select" name="fasilitas[]" multiple="multiple" id="fkamar"
+                required>
                 @foreach ($fkamars as $fkamar)
                 <option value="{{ $fkamar->id }}" @foreach ($tipe_kamar->fasilitasKamars as $value)
                     @if ($value->id == $fkamar->id)

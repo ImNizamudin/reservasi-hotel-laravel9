@@ -40,7 +40,7 @@ class FkamarController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            "nama" => "required|unique:fasilitas_kamars|max:255",
+            "nama" => "required|max:255",
             "img" => "image|file|max:1024",
         ]);
 
@@ -87,7 +87,7 @@ class FkamarController extends Controller
     public function update(Request $request, FasilitasKamar $fasilitasKamar)
     {
         $validatedData = $request->validate([
-            "nama" => "required|unique:fasilitas_kamars|max:255",
+            "nama" => "required|max:255",
             "img" => "image|file|max:1024",
         ]);
 

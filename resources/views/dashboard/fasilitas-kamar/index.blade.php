@@ -6,7 +6,6 @@
     <h1 class="h2">Fasilitas Kamar</h1>
 </div>
 
-{{-- flash message --}}
 @if (session()->has('success'))
 <div class="alert alert-success alert-dismissible fade show col-lg-6" role="alert">
     {{ session('success') }}

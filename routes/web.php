@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Resepsionis\BookingListController;
-use App\Http\Controllers\Resepsionis\bookCodeController;
 use App\Http\Controllers\Tamu\BookingController;
 use App\Http\Controllers\Tamu\MyBookingList;
 use Illuminate\Support\Facades\App;
@@ -49,12 +48,6 @@ Route::get('/gallery', function () {
     ]);
 });
 
-// Route::get('/detailKamar/{id}', function () {
-//     return view('detailKamar', [
-//         "title" => "Detail Kamar"
-//     ]);
-// });
-
 Route::get('/blog', function () {
     return view('blog', [
         "title" => "Blog"
@@ -88,7 +81,6 @@ Route::resource('/admin/tipe-kamar', TipeKamarController::class)->except('show')
 
 
 Route::get('/resepsionis', [BookingListController::class, 'index'])->middleware(['auth', 'resepsionis']);
-Route::get('/resepsionis/kode-booking', [bookCodeController::class, 'index'])->middleware(['auth', 'resepsionis']);
 
 Route::get('/booking/{id:id}', [BookingController::class, 'createID'])->middleware(['auth', 'user']);
 Route::get('/booking', [BookingController::class, 'create'])->middleware(['auth', 'user']);

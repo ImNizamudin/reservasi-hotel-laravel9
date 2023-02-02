@@ -23,8 +23,8 @@
                     Hi!, {{ auth()->user()->nama }}
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/#"><i class="bi bi-layout-text-sidebar-reverse"></i> User</a>
-                    </li>
+                    <li><a class="dropdown-item" href="/#"><i class="bi bi-layout-text-sidebar-reverse"></i> User</a></li>
+                    <li><a class="dropdown-item" href="/mybookinglist/{{auth()->user()->id}}"><i class="bi bi-layout-text-sidebar-reverse"></i> My Booking</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

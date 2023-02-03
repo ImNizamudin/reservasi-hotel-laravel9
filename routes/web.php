@@ -81,6 +81,10 @@ Route::resource('/admin/tipe-kamar', TipeKamarController::class)->except('show')
 
 
 Route::get('/resepsionis', [BookingListController::class, 'index'])->middleware(['auth', 'resepsionis']);
+Route::post('/resepsionis', [BookingListController::class, 'search'])->middleware(['auth', 'resepsionis']);
+Route::post('/resepsionis/bayar', [BookingListController::class, 'bayar'])->middleware(['auth', 'resepsionis']);
+Route::post('/resepsionis/checkin', [BookingListController::class, 'checkin'])->middleware(['auth', 'resepsionis']);
+Route::post('/resepsionis/checkout', [BookingListController::class, 'checkout'])->middleware(['auth', 'resepsionis']);
 
 Route::get('/booking/{id:id}', [BookingController::class, 'createID'])->middleware(['auth', 'user']);
 Route::get('/booking', [BookingController::class, 'create'])->middleware(['auth', 'user']);

@@ -60,11 +60,15 @@ class BookingController extends Controller
 
             $stok = $request->stok - $request->jml_kamar;
 
+            $onbook = $this->konfersiOnbook($request->onbook);
+
+            $jml_onbook = $onbook + $request->jml_kamar;
+
             BookingList::create($validatedData);
             TipeKamar::where('id', $request->tipe_kamar_id)
                 ->update([
                     'stok' => $stok,
-                    'onbook' => $request->jml_kamar,
+                    'onbook' => $jml_onbook,
                 ]);
 
             return redirect('/mybookinglist/' . $request->user_id)->with('success', 'Booking Berhasil! Simpan Kartu Pesanan ini!');
@@ -80,6 +84,15 @@ class BookingController extends Controller
         $jarak = $tgl2 - $tgl1;
         $hari = $jarak / 60 / 60 / 24;
         return $hari;
+    }
+
+    public function konfersiOnbook($onbook)
+    {
+        if ($onbook == null) {
+            return 0;
+        } else {
+            return $onbook;
+        }
     }
 
     public function generate_string($input, $strength = 16)

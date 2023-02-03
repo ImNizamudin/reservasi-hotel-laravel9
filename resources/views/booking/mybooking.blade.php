@@ -2,22 +2,22 @@
 
 @section('container')
 
-@if (session()->has('success'))
-<div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
-    {{ session('success') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
-
 <style>
     .card {
-    background: #fff;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 </style>
 
 <h1 class="text-center" style="margin-top: 30px;">My Booking Lists</h1>
 <h3 class="text-center">{{ $user->nama }}</h3>
+
+@if (session()->has('success'))
+<div class="alert alert-primary alert-dismissible fade show col-lg-12" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <div class="container-fluid">
     <div class="row" style="margin-top: 50px;">
@@ -25,6 +25,7 @@
         <div class="col-md-3">
             <div class="card border-dark mb-3" style="max-width: 20rem;">
                 <div class="card-header text-center">{{ $booking->status }}</div>
+                <hr>
                 <div class="card-body">
                     <h5 class="card-title text-center">
                         {{ $booking->tipeKamars->nama }} x {{ $booking->jml_kamar }}
@@ -35,7 +36,8 @@
                     <p class="card-text">Total biaya : @rupiah($booking->total)</p>
                     <p class="card-text">Pay by : {{ $booking->PayBy }}</p>
                     <strong class="card-text">Booking ID : {{ $booking->kode_booking }}</strong>
-                    <center><a href="/mybookinglist-print/{{ $booking->id }}" class="btn btn-primary" style="margin-top: 20px;">Simpan Bukti</a></center>
+                    <center><a href="/mybookinglist-print/{{ $booking->id }}" class="btn btn-primary"
+                            style="margin-top: 20px;">Simpan Bukti</a></center>
                 </div>
             </div>
         </div>

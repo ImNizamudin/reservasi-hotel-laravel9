@@ -46,88 +46,117 @@
     }
 </style>
 
-<div class="row">
-    <div class="col-3">
-        <div style="margin-left: 30px;"
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Kode Booking</h1>
-        </div>
+@if (!$search)
+<div class="row mb-3 border-bottom">
+    <div class="col-md-12">
+        <h1 class="h2 text-center mt-2">Cari Pesanan</h1>
     </div>
-    <div class="col-9">
-        <div style="margin-top: 20px; margin-left: 30px;" class="group">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-                <g>
-                    <path
-                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-                    </path>
-                </g>
-            </svg>
-            <input style="width: 300px;" placeholder="Search" type="search" class="input">
-        </div>
+    <div class="col-md-12 my-3">
+        <form action="/resepsionis" method="POST">
+            @csrf
+            <div class="row">
+                <label for="kode" class="col-sm-2 col-form-label">Booking ID</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="kode" id="kode" placeholder="Search">
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
-
+@else
 @if (session()->has('success'))
-<div class="alert alert-success alert-dismissible fade show col-lg-6" role="alert">
+<div class="alert alert-primary alert-dismissible fade show col-lg-12" role="alert">
     {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
 
-<div class="card text-center mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
+<div class="row mb-3 border-bottom">
+    <div class="col-md-12">
+        <h1 class="h2 text-center mt-2">Cari Pesanan</h1>
+    </div>
+    <div class="col-md-12 my-3">
+        <form action="/resepsionis" method="POST">
+            @csrf
+            <div class="row">
+                <label for="kode" class="col-sm-2 col-form-label">Booking ID</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="kode" id="kode" placeholder="Search"
+                        value="{{ $kode }}">
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
-{{-- <div style="margin-left: 30px;" class="table-responsive col-lg">
-    <a href="/admin/fasilitas-kamar/create" class="btn btn-primary mb-3"><span><svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24" width="20" height="20">
-                <path fill="none" d="M0 0h24v24H0z"></path>
-                <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
-            </svg></span>Tambah Kode Booking</a>
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Gambar</th>
-                <th scope="col">Nama Fasilitas</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead> --}}
-        {{-- <tbody>
-            @foreach ($fkamars as $fkamar)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>
-                    @if ($fkamar->img)
-                    <div style="max-height: 350px; max-width: 300px; overflow: hidden;">
-                        <img src="{{ asset('storage/' . $fkamar->img) }}" class="img-fluid mt-4"
-                            alt="{{ $fkamar->nama }}">
-                    </div>
-                    @else
-                    <img src="https://source.unsplash.com/300x200?hotel-room" class="img-fluid mt-4"
-                        alt="Kamar {{ $fkamar->nama }}">
-                    @endif
-                </td>
-                <td>{{ $fkamar->nama }}</td>
-                <td class="text-center">
-                    <a href="/admin/fasilitas-kamar/{{ $fkamar->id }}/edit" class="badge bg-warning"><span
-                            data-feather="edit"></span></a>
-                    <form action="/admin/fasilitas-kamar/{{ $fkamar->id }}" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="badge bg-danger border-0" onclick="return confirm('Anda Yakin?')"><span
-                                data-feather="x-circle"></span></button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody> --}}
-    </table>
+@foreach ($pesanan as $item)
+
+@if ($item->status == "DISETUJUI" || $item->status == "DIBAYAR" || $item->status == "CHECKIN")
+<div class="card text-center mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{ $item->kode_booking }}</h5>
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="card-text">Pemesan : {{ $item->nama_pemesan }}</p>
+                <p class="card-text">Tanggal Check-in : {{ $item->tgl_checkin }}</p>
+                <p class="card-text">Tanggal Check-out : {{ $item->tgl_checkout }}</p>
+            </div>
+            <div class="col-sm-4">
+                @if($item->status == "DISETUJUI")
+                <p class="card-text">Status : <span class="bg-info text-white">{{ $item->status }}</span></p>
+                @else
+                <p class="card-text">Status : <span class="bg-success">{{ $item->status }}</span></p>
+                @endif
+                <p class="card-text">Nama Kamar : {{ $item->tipeKamars->nama }}</p>
+                <p class="card-text">Total biaya : @rupiah($item->total)</p>
+            </div>
+            <div class="col-sm-4">
+                @if ($item->status == "DISETUJUI")
+                <form action="/resepsionis/bayar" method="POST">
+                    @csrf
+                    <input type="hidden" name="kode" value="{{ $item->kode_booking }}">
+                    <button type="submit" class="btn btn-primary">Bayar</button>
+                </form>
+                <button class="btn btn-success mt-2" disabled>Check-in</button>
+                @endif
+                @if($item->status == "DIBAYAR")
+                <form action="/resepsionis/checkin" method="POST">
+                    @csrf
+                    <input type="hidden" name="kode" value="{{ $item->kode_booking }}">
+                    <input type="hidden" name="jml_kamar" value="{{ $item->jml_kamar }}">
+                    <input type="hidden" name="id_kamar" value="{{ $item->tipeKamars->id }}">
+                    <input type="hidden" name="onbook" value="{{ $item->tipeKamars->onbook }}">
+                    <input type="hidden" name="onuse" value="{{ $item->tipeKamars->onuse }}">
+                    <button type="submit" class="btn btn-success">Check-in</button>
+                </form>
+                @endif
+                @if($item->status == "CHECKIN")
+                <p class="card-text">Telah Check-in</p>
+                <form action="/resepsionis/checkout" method="POST">
+                    @csrf
+                    <input type="hidden" name="kode" value="{{ $item->kode_booking }}">
+                    <input type="hidden" name="jml_kamar" value="{{ $item->jml_kamar }}">
+                    <input type="hidden" name="id_kamar" value="{{ $item->tipeKamars->id }}">
+                    <input type="hidden" name="stok" value="{{ $item->tipeKamars->stok }}">
+                    <input type="hidden" name="onuse" value="{{ $item->tipeKamars->onuse }}">
+                    <button type="submit" class="btn btn-info">Check-out</button>
+                </form>
+                @endif
+            </div>
+        </div>
+    </div>
 </div>
+
+@endif
+@endforeach
+
+@endif
 
 @endsection

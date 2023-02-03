@@ -3,6 +3,7 @@
 @section('container')
 
 @if ($tipe_kamar->stok > 1)
+
 <div class="container">
     <form action="/booking" method="POST">
         @csrf
@@ -56,6 +57,7 @@
         </div>
         <div class="mb-3" style="width: 100%;">
             <input type="hidden" name="stok" value="{{ old('stok', $tipe_kamar->stok) }}">
+            <input type="hidden" name="onbook" value="{{ old('onbook', $tipe_kamar->onbook) }}">
             <label for="jml_kamar" class="form-label">Jumlah Kamar</label>
             <input type="number" class="form-control @error('jml_kamar') is-invalid @enderror" name="jml_kamar"
                 id="jml_kamar" value="{{ old('jml_kamar') }}" min="1" max="{{ $tipe_kamar->stok }}" required>
@@ -110,7 +112,8 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary" id="submit" style="margin-bottom: 20px; width: 300px;">Booking Kamar</button>
+        <button type="submit" class="btn btn-primary" id="submit" style="margin-bottom: 20px; width: 300px;">Booking
+            Kamar</button>
     </form>
 </div>
 

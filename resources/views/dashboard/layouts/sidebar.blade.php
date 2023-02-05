@@ -23,6 +23,12 @@
           Tipe Kamar
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('admin/laporan*') ? 'active' : '' }}" href="/admin/laporan">
+          <span data-feather="list" class="align-text-bottom"></span>
+          Laporan
+        </a>
+      </li>
     </ul>
     @endcan
 
@@ -35,6 +41,12 @@
         <a class="nav-link {{ Request::is('resepsionis*') ? 'active' : '' }}" aria-current="page" href="/resepsionis">
           <span data-feather="grid" class="align-text-bottom"></span>
           Booking List
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('resepsionis/laporan*') ? 'active' : '' }}" href="/resepsionis/laporan">
+          <span data-feather="list" class="align-text-bottom"></span>
+          Laporan
         </a>
       </li>
     </ul>

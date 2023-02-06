@@ -58,10 +58,6 @@
 @endif
 
 <div class="table-responsive col-lg">
-    {{-- <a href="/admin/fasilitas-kamar/create" class="btn btn-primary mb-3">Tambah Fasilitas Kamar Baru</a> --}}
-    <div class="">
-        <input type="text" class="form-control" name="kode" id="kode" placeholder="Search" style="width: 300px;"><br>
-    </div>
     <table class="table table-striped table-sm">
         <thead>
             <tr>
@@ -75,33 +71,17 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($fkamars as $fkamar)
+            @foreach ($booking_lists as $booking)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>
-                    @if ($fkamar->img)
-                    <div style="max-height: 350px; max-width: 300px; overflow: hidden;">
-                        <img src="{{ asset('storage/' . $fkamar->img) }}" class="img-fluid mt-4"
-                            alt="{{ $fkamar->nama }}">
-                    </div>
-                    @else
-                    <img src="https://source.unsplash.com/300x200?hotel-room" class="img-fluid mt-4"
-                        alt="Kamar {{ $fkamar->nama }}">
-                    @endif
-                </td>
-                <td>{{ $fkamar->nama }}</td>
-                <td class="text-center">
-                    <a href="/admin/fasilitas-kamar/{{ $fkamar->id }}/edit" class="badge bg-warning"><span
-                            data-feather="edit"></span></a>
-                    <form action="/admin/fasilitas-kamar/{{ $fkamar->id }}" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="badge bg-danger border-0" onclick="return confirm('Anda Yakin?')"><span
-                                data-feather="x-circle"></span></button>
-                    </form>
-                </td>
+                <td>{{ $booking->kode_booking }}</td>
+                <td>{{ $booking->tgl_checkin }}</td>
+                <td>{{ $booking->tgl_checkout }}</td>
+                <td>{{ $booking->tipeKamars->nama }}</td>
+                <td>{{ $booking->nama_pemesan }}</td>
+                <td>@rupiah($booking->total)</td>
             </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 </div>

@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\MustAdmin::class,
         'resepsionis' => \App\Http\Middleware\MustResepsionis::class,
         'user' => \App\Http\Middleware\MustUser::class,
+        'admindanresepsionis' => \App\Http\Middleware\OnlyAdminResepsionis::class,
     ];
 }

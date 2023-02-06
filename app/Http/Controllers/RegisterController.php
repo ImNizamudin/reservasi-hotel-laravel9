@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register.index',[
+        return view('register.index', [
             "title" => "Register"
         ]);
     }
@@ -38,10 +38,6 @@ class RegisterController extends Controller
 
         User::create($validateData);
 
-        // membuat flash message
-        // $request->session()->flash('success', 'Registration successfull! Please login!');
-
-        // redirect dengan mengirimkan flash message
         return redirect('/login')->with('success', 'Registration Berhasil! Silahkan login!');
     }
 }

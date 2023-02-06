@@ -10,14 +10,9 @@ use Illuminate\Http\Request;
 class BookingController extends Controller
 {
 
-    /**  ada dua jalur untuk memboking kamar
-     * 1. dari tipekamar pilih kamar mana, trus booking now, lalu page booking -> kamar auto terselect(inputan)
-     * 2. dari btn / aksi membuat boking, klik lalu diarahkan ke page booking -> memilih kamar di select(inputan)
-     */
-
     public function createID(TipeKamar $id)
     {
-        return view('booking.create', [
+        return view('booking.createId', [
             "title" => "Booking",
             "tipe_kamar" => $id,
         ]);
@@ -25,7 +20,10 @@ class BookingController extends Controller
 
     public function create()
     {
-        return view('booking.create');
+        return view('booking.create', [
+            "title" => "Booking",
+            "tipe_kamars" => TipeKamar::all(),
+        ]);
     }
 
     public function store(Request $request)
@@ -73,7 +71,30 @@ class BookingController extends Controller
 
             return redirect('/mybookinglist/' . $request->user_id)->with('success', 'Booking Berhasil! Simpan Kartu Pesanan ini!');
         } else {
-            return redirect('/tipeKamar/' . $request->tipe_kamar_id)->with('penuh', 'Maaf! Seluruh kamar ini telah dibooking!');;
+            if ($request->stok < 1) {
+                return redirect('/tipeKamar/' . $request->tipe_kamar_id)->with('penuh', 'Maaf! Seluruh kamar ini telah dibooking!');;
+            } else {
+                return redirect('/tipeKamar/' . $request->tipe_kamar_id)->with('penuh', 'Maaf! Kamar ini tersedia' . $request->stok . '.');;
+            }
+        }
+    }
+
+    public function batalkan(Request $request)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        timezone_open("Asia/Jakarta");
+        $today = time();
+        $tgl = explode('-', $request->tgl_checkin);
+        $jam = (int)((mktime(0, 0, 0, $tgl[1], $tgl[2], $tgl[0]) - $today) / 3600);
+
+        if ($jam < 24) {
+            return redirect('/mybookinglist/' . auth()->user()->id)->with('failed', 'Tidak bisa membatalkan booking. Maksimal pembatalan sebelum h-1 tanggal check-in.');
+        } else {
+            BookingList::where('kode_booking', $request->kode)
+                ->update([
+                    'status' => "DIBATALKAN",
+                ]);
+            return redirect('/mybookinglist/' . auth()->user()->id)->with('success', 'Pembatalan booking berhasil.');
         }
     }
 

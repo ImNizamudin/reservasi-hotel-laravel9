@@ -2,8 +2,8 @@
 
 @section('container')
 
-@if ($tipe_kamar->stok > 1)
-
+{{-- @if ($tipe_kamar->stok > 1) --}}
+{{ $tipe_kamars }}
 <div class="container">
     <form action="/booking" method="POST">
         @csrf
@@ -39,21 +39,18 @@
             @enderror
         </div>
         <div class="mb-3" style="width: 100%;">
-            <input type="hidden" name="tipe_kamar_id" value="{{ old('tipe_kamar_id', $tipe_kamar->id) }}">
+            <label for="tipe_kamar" class="form-label">Pilih Kamar</label>
+            <select class="form-select" name="tipe_kamar_id">
+                @foreach ($tipe_kamars as $tipe_kamar)
+                <option value="{{ $tipe_kamar->id }}">{{ $tipe_kamar->nama }}</option>
+                @endforeach
+            </select>
             @error('tipe_kamar_id')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
             @enderror
             <input type="hidden" name="harga" value="{{ old('harga', $tipe_kamar->harga) }}">
-            <label for="nama_kamar" class="form-label">Nama Kamar</label>
-            <input type="text" class="form-control @error('nama_kamar') is-invalid @enderror" name="nama_kamar"
-                id="nama_kamar" value="{{ old('nama_kamar', $tipe_kamar->nama) }}" required readonly>
-            @error('nama_kamar')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
         </div>
         <div class="mb-3" style="width: 100%;">
             <input type="hidden" name="stok" value="{{ old('stok', $tipe_kamar->stok) }}">
@@ -118,14 +115,14 @@
 </div>
 
 
-@else
+{{-- @else
 <center>
     <h1>Maaf seluruh Kamar {{ $tipe_kamar->nama }} telah dipesan!</h1>
 </center>
 <center>
     <a href="/tipeKamar" class="btn btn-primary">Pesan Kamar Lain</a>
 </center>
-@endif
+@endif --}}
 
 
 <!-- loader -->

@@ -11,21 +11,6 @@ class MyBookingList extends Controller
 {
     public function show($user_id)
     {
-        /**
-         * perlu perbaikan n+1 problem
-         * action dibatalkan masih belum bisa
-         * 
-         * 
-         * menunjukkan card seluruh pesanan yg dibuat, action didonwload pdf
-         * Nama kamar x brp banyak kamar dipesan
-         * Nama pemesan
-         * tgl checkin
-         * tgl checkout
-         * payby
-         * status pembayaran
-         * total biaya
-         * Booking ID
-         */
         return view('booking.mybooking', [
             "title" => "My Booking List",
             "booking_lists" => BookingList::with(['tipeKamars'])->latest()->where('user_id', $user_id)->get(),

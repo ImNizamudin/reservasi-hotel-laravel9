@@ -19,6 +19,13 @@
 </div>
 @endif
 
+@if (session()->has('failed'))
+<div class="alert alert-danger alert-dismissible fade show col-lg-12" role="alert">
+    {{ session('failed') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="container-fluid">
     <div class="row" style="margin-top: 50px;">
         @foreach ($booking_lists as $booking)
@@ -36,8 +43,34 @@
                     <p class="card-text">Total biaya : @rupiah($booking->total)</p>
                     <p class="card-text">Pay by : {{ $booking->PayBy }}</p>
                     <strong class="card-text">Booking ID : {{ $booking->kode_booking }}</strong>
-                    <center><a href="/mybookinglist-print/{{ $booking->id }}" class="btn btn-primary"
-                            style="margin-top: 20px;">Simpan Bukti</a></center>
+                    <center>
+                        <a href="/mybookinglist-print/{{ $booking->id }}" class="btn btn-primary"
+                            style="margin-top: 20px;">Simpan Bukti</a>
+
+                        @if ($booking->status == "DISETUJUI" || $booking->status == "DIBAYAR")
+                        <form action="/booking/batalkan" method="post" class="mt-3">
+                            @csrf
+                            <input type="hidden" name="kode" value="{{ $booking->kode_booking }}">
+                            <input type="hidden" name="tgl_checkin" value="{{ $booking->tgl_checkin }}">
+
+                            @if (date('Y-m-d') == $booking->tgl_checkin)
+                            <button class="btn btn-danger" type="submit" disabled><i class="bi bi-box-arrow-right"></i>
+                                Batalkan Booking
+                            </button>
+                            @else
+                            <button class="btn btn-danger" type="submit"
+                                onclick="return confirm('Anda Yakin Ingin Membatalkan Booking?')">
+                                <i class="bi bi-box-arrow-right"></i>
+                                Batalkan Booking
+                            </button>
+                            @endif
+                            <small class="d-block text-small mt-2">
+                                Pembatalan Booking maximal h-1 dari tanggal check-in
+                            </small>
+                        </form>
+                        @endif
+
+                    </center>
                 </div>
             </div>
         </div>

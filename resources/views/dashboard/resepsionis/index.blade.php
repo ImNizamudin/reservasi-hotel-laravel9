@@ -75,6 +75,13 @@
 </div>
 @endif
 
+@if (session()->has('failed'))
+<div class="alert alert-danger alert-dismissible fade show col-lg-12" role="alert">
+    {{ session('failed') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="row mb-3 border-bottom">
     <div class="col-md-12">
         <h1 class="h2 text-center mt-2">Cari Pesanan</h1>
@@ -131,6 +138,7 @@
                     @csrf
                     <input type="hidden" name="kode" value="{{ $item->kode_booking }}">
                     <input type="hidden" name="jml_kamar" value="{{ $item->jml_kamar }}">
+                    <input type="hidden" name="tgl_checkin" value="{{ $item->tgl_checkin }}">
                     <input type="hidden" name="id_kamar" value="{{ $item->tipeKamars->id }}">
                     <input type="hidden" name="onbook" value="{{ $item->tipeKamars->onbook }}">
                     <input type="hidden" name="onuse" value="{{ $item->tipeKamars->onuse }}">

@@ -43,7 +43,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 	</section>
 </div>
 
-<section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
+{{-- <section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
 	<div class="container">
 		<div class="row no-gutters">
 			<div class="col-lg-12">
@@ -117,7 +117,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 			</div>
 		</div>
 	</div>
-</section>
+</section> --}}
 
 
 <section class="ftco-section">

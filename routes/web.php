@@ -12,6 +12,7 @@ use App\Http\Controllers\Resepsionis\BookingListController;
 use App\Http\Controllers\Tamu\BookingController;
 use App\Http\Controllers\Tamu\MyBookingList;
 use App\Models\TipeKamar;
+use App\Models\TipeKamar;
 use Illuminate\Support\Facades\App;
 
 

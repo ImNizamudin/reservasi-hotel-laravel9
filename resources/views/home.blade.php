@@ -33,7 +33,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 				<div class="row no-gutters slider-text align-items-center justify-content-end">
 					<div class="col-md-6 ftco-animate">
 						<div class="text">
-							<h2>Harbor Lights Hotel &amp; Resort</h2>
+							<h2>Hotel VLOYVE</h2>
 							<h1 class="mb-3">It feels like staying in your own home.</h1>
 						</div>
 					</div>
@@ -124,7 +124,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
-				<span class="subheading">Welcome to Harbor Lights Hotel</span>
+				<span class="subheading">Welcome to VLOYVE Hotel</span>
 				<h2 class="mb-4">You'll Never Want To Leave</h2>
 			</div>
 		</div>
@@ -202,13 +202,13 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 			</div>
 			<div class="col-md-5 wrap-about pb-md-3 ftco-animate pr-md-5 pb-md-5 pt-md-4">
 				<div class="heading-section mb-4 my-5 my-md-0">
-					<span class="subheading">About Harbor Lights Hotel</span>
-					<h2 class="mb-4">Harbor Lights Hotel the Most Recommended Hotel All Over the World</h2>
+					<span class="subheading">About VLOYVE Hotel</span>
+					<h2 class="mb-4">VLOYVE Hotel the Most Recommended Hotel All Over the World</h2>
 				</div>
 				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
 					the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
 					language ocean.</p>
-				<p><a href="#" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
+				<p><a href="/tipeKamar" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
 			</div>
 		</div>
 	</div>

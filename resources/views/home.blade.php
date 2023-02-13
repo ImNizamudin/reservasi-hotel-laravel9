@@ -307,7 +307,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 	<div class="container-fluid px-0">
 		<div class="row no-gutters justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
-				<span class="subheading">Harbor Lights Rooms</span>
+				<span class="subheading">VLOYVE Hotel Rooms</span>
 				<h2 class="mb-4">Hotel Master's Rooms</h2>
 			</div>
 		</div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Resepsionis\BookingListController;
 use App\Http\Controllers\Tamu\BookingController;
 use App\Http\Controllers\Tamu\MyBookingList;
+use App\Models\TipeKamar;
 use Illuminate\Support\Facades\App;
 
 
@@ -27,7 +28,8 @@ use Illuminate\Support\Facades\App;
 
 Route::get('/', function () {
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        "tipe_kamars" => TipeKamar::all()
     ]);
 });
 

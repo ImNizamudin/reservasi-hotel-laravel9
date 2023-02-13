@@ -33,7 +33,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 	          <div class="row no-gutters slider-text align-items-center justify-content-end">
 	          <div class="col-md-6 ftco-animate">
 	          	<div class="text">
-	          		<h2>Harbor Lights Hotel &amp; Resort</h2>
+	          		<h2>Hotel VLOYVE</h2>
 		            <h1 class="mb-3">It feels like staying in your own home.</h1>
 	            </div>
 	          </div>
@@ -43,7 +43,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 	    </section>
 	  </div>
 
-    <section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
+    {{-- <section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
     	<div class="container">
     		<div class="row no-gutters">
     			<div class="col-lg-12">
@@ -115,14 +115,14 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 	    		</div>
     		</div>
     	</div>
-    </section>
+    </section> --}}
 
 
 		<section class="ftco-section">
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Welcome to Harbor Lights Hotel</span>
+          	<span class="subheading">Welcome to VLOYVE Hotel</span>
             <h2 class="mb-4">You'll Never Want To Leave</h2>
           </div>
         </div>  
@@ -200,11 +200,11 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 					</div>
 					<div class="col-md-5 wrap-about pb-md-3 ftco-animate pr-md-5 pb-md-5 pt-md-4">
 	          <div class="heading-section mb-4 my-5 my-md-0">
-	          	<span class="subheading">About Harbor Lights Hotel</span>
-	            <h2 class="mb-4">Harbor Lights Hotel the Most Recommended Hotel All Over the World</h2>
+	          	<span class="subheading">About VLOYVE Hotel</span>
+	            <h2 class="mb-4">VLOYVE Hotel the Most Recommended Hotel All Over the World</h2>
 	          </div>
 	          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-	          <p><a href="#" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
+	          <p><a href="/tipeKamar" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
 					</div>
 				</div>
 			</div>
@@ -294,91 +294,39 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
     	<div class="container-fluid px-0">
     		<div class="row no-gutters justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Harbor Lights Rooms</span>
+          	<span class="subheading">vVLOYVE HOTEL Rooms</span>
             <h2 class="mb-4">Hotel Master's Rooms</h2>
           </div>
         </div>  
     		<div class="row no-gutters">
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-6.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">King Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-1.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
+    			@foreach ($tipe_kamars as $tipe_kamar)
+				<div class="col-lg-6">
+					<div class="room-wrap d-md-flex ftco-animate">
+						@if ($tipe_kamar->img)
+						<a href="#" class="img"
+							style="background-image: url({{ asset('storage/' . $tipe_kamar->img) }});"></a>
+						@else
+						<a href="#" class="img" style="background-image: url(images/room-6.jpg);"></a>
+						@endif
+						<div class="half left-arrow d-flex align-items-center">
+							<div class="text p-4 text-center">
+								<p class="star mb-0"><span class="ion-ios-star"></span><span
+										class="ion-ios-star"></span><span class="ion-ios-star"></span><span
+										class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
+								<p class="mb-0"><span class="price mr-1">@rupiah($tipe_kamar->harga)</span> <span
+										class="per">per night</span>
+								</p>
+								<h3 class="mb-3"><a href="/tipeKamar/{{ $tipe_kamar->id }}">{{ $tipe_kamar->nama }}</a>
+								</h3>
+								<p class="pt-1"><a href="/tipeKamar/{{ $tipe_kamar->id }}"
+										class="btn-custom px-3 py-2 rounded">View Details
+										<span class="icon-long-arrow-right"></span></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
 
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img order-md-last" style="background-image: url(images/room-2.jpg);"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img order-md-last" style="background-image: url(images/room-3.jpg);"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Deluxe Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-4.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Luxury Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(images/room-5.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Superior Room</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
     		</div>
     	</div>
     </section>

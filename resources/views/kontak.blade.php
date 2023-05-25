@@ -35,17 +35,17 @@
           </div>
           <div class="col-md-3 d-flex">
           	<div class="info rounded bg-white p-4">
-	            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+	            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@hotelvloyve.com</a></p>
 	          </div>
           </div>
           <div class="col-md-3 d-flex">
           	<div class="info rounded bg-white p-4">
-	            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+	            <p><span>Website</span> <a href="#">hotelvloyve.com</a></p>
 	          </div>
           </div>
         </div>
         <div class="row block-9">
-          <div class="col-md-6 order-md-last d-flex">
+          <div class="">
             <form action="#" class="bg-white p-5 contact-form">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Your Name">
@@ -66,9 +66,9 @@
           
           </div>
 
-          <div class="col-md-6 d-flex">
+          {{-- <div class="col-md-6 d-flex">
           	<div id="map" class="bg-white"></div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </section>

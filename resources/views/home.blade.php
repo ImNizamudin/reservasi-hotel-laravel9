@@ -348,7 +348,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 
 
 
-<section class="ftco-section ftco-menu bg-light">
+{{-- <section class="ftco-section ftco-menu bg-light">
 	<div class="container-fluid px-md-4">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
@@ -446,10 +446,10 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 			</div>
 		</div>
 	</div>
-</section>
+</section> --}}
 
 
-<section class="ftco-section">
+{{-- <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
@@ -508,7 +508,7 @@ home maka tiap akses home bakal muncul trs flash message nya --}}
 			</div>
 		</div>
 	</div>
-</section>
+</section> --}}
 
 <section class="instagram">
 	<div class="container-fluid">
